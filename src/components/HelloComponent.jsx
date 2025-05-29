@@ -1,8 +1,8 @@
-import React from 'react';
+import { render, screen } from '@testing-library/react';
+import HelloComponent from './HelloComponent';
 
-const HelloComponent = () => {
-  return <h1 data-testid="hello">Hello world</h1>;
-};
-
-export default HelloComponent;
-// This is a test commit
+test('renders Hello world', () => {
+  render(<HelloComponent />);
+  const helloElement = screen.getByTestId('hello');
+  expect(helloElement).toHaveTextContent('Hello world');
+});
